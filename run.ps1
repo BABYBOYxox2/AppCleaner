@@ -14,10 +14,10 @@ Add-Type -AssemblyName PresentationFramework, PresentationCore, WindowsBase, Sys
 # window sizing and resolving the current user's Downloads/Pictures locations.
 # It is loaded from bytes. It is not downloaded or extracted to a DLL on disk.
 if (-not ('AppCleaner.MemoryNativeFrame' -as [type])) {
-    $interopBytes=[Convert]::FromBase64String('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ZGxlZABpZAB0b2tlbgBwYXRoAFN5c3RlbS5SdW50aW1lLkludGVyb3BTZXJ2aWNlcwBPdXRBdHRyaWJ1dGUALmN0b3IAbmFtZQBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUATWVtb3J5SW50ZXJvcC05MWY5MTgxMjlmNWQ0ZGVkOTcyM2ZmZGI4MzIyNWEwZgBEbGxJbXBvcnRBdHRyaWJ1dGUAdXNlcjMyLmRsbAA8PmNfX0Rpc3BsYXlDbGFzczEARXZlbnRBcmdzADxBdHRhY2g+Yl9fMABwYXJhbTAAcGFyYW0xAFN5c3RlbS5XaW5kb3dzLkludGVyb3AAV2luZG93SW50ZXJvcEhlbHBlcgBnZXRfSGFuZGxlAFByZXNlbnRhdGlvbkNvcmUASHduZFNvdXJjZQBGcm9tSHduZABId25kU291cmNlSG9vawBBZGRIb29rAEV2ZW50SGFuZGxlcgBhZGRfU291cmNlSW5pdGlhbGl6ZWQASW50UHRyAFplcm8AVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBNYXJzaGFsAFNpemVPZgBvcF9FcXVhbGl0eQBQdHJUb1N0cnVjdHVyZQBTdHJ1Y3R1cmVUb1B0cgBTdHJ1Y3RMYXlvdXRBdHRyaWJ1dGUATGF5b3V0S2luZABDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBzaGVsbDMyLmRsbABTdHJpbmcAQXJndW1lbnRFeGNlcHRpb24AVGhyb3dFeGNlcHRpb25Gb3JIUgBQdHJUb1N0cmluZ1VuaQBvcF9JbmVxdWFsaXR5AEZyZWVDb1Rhc2tNZW0AABNEAG8AdwBuAGwAbwBhAGQAcwAASTMANwA0AEQARQAyADkAMAAtADEAMgAzAEYALQA0ADUANgA1AC0AOQAxADYANAAtADMAOQBDADQAOQAyADUARQA0ADYANwBCAAERUABpAGMAdAB1AHIAZQBzAABJMwAzAEUAMgA4ADEAMwAwAC0ANABFADEARQAtADQANgA3ADYALQA4ADMANQBBAC0AOQA4ADMAOQA1AEMAMwBCAEMA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')
+    $interopBytes=[Convert]::FromBase64String('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ZGxlZABpZAB0b2tlbgBwYXRoAFN5c3RlbS5SdW50aW1lLkludGVyb3BTZXJ2aWNlcwBPdXRBdHRyaWJ1dGUALmN0b3IAbmFtZQBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUATWVtb3J5SW50ZXJvcC02ZmM1ZDgwOGQ1NDM0ZWZkYmM1ZDU1N2VjZjhiYTA3YgBEbGxJbXBvcnRBdHRyaWJ1dGUAdXNlcjMyLmRsbAA8PmNfX0Rpc3BsYXlDbGFzczEARXZlbnRBcmdzADxBdHRhY2g+Yl9fMABwYXJhbTAAcGFyYW0xAFN5c3RlbS5XaW5kb3dzLkludGVyb3AAV2luZG93SW50ZXJvcEhlbHBlcgBnZXRfSGFuZGxlAFByZXNlbnRhdGlvbkNvcmUASHduZFNvdXJjZQBGcm9tSHduZABId25kU291cmNlSG9vawBBZGRIb29rAEV2ZW50SGFuZGxlcgBhZGRfU291cmNlSW5pdGlhbGl6ZWQASW50UHRyAFplcm8AVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBNYXJzaGFsAFNpemVPZgBvcF9FcXVhbGl0eQBQdHJUb1N0cnVjdHVyZQBTdHJ1Y3R1cmVUb1B0cgBTdHJ1Y3RMYXlvdXRBdHRyaWJ1dGUATGF5b3V0S2luZABDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBzaGVsbDMyLmRsbABTdHJpbmcAQXJndW1lbnRFeGNlcHRpb24AVGhyb3dFeGNlcHRpb25Gb3JIUgBQdHJUb1N0cmluZ1VuaQBvcF9JbmVxdWFsaXR5AEZyZWVDb1Rhc2tNZW0AABNEAG8AdwBuAGwAbwBhAGQAcwAASTMANwA0AEQARQAyADkAMAAtADEAMgAzAEYALQA0ADUANgA1AC0AOQAxADYANAAtADMAOQBDADQAOQAyADUARQA0ADYANwBCAAERUABpAGMAdAB1AHIAZQBzAABJMwAzAEUAMgA4ADEAMwAwAC0ANABFADEARQAtADQANgA3ADYALQA4ADMANQBBAC0AOQA4ADMAOQA1AEMAMwBCAEMA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')
     $sha=[Security.Cryptography.SHA256]::Create()
     try { $actualHash=([BitConverter]::ToString($sha.ComputeHash($interopBytes))).Replace('-','') } finally { $sha.Dispose() }
-    if ($actualHash -ne 'A9DDCC87E62CD4FE8C4A20139585568D84C391E21A170BBCF3E2086F965B2BE3') { throw 'The embedded Windows helper is damaged. Copy the complete script again.' }
+    if ($actualHash -ne '6F19D17976BC0D4EEEBFEEC2ACE32784EA1237FE7FE10DF74B3658C1E2F53944') { throw 'The embedded Windows helper is damaged. Copy the complete script again.' }
     [void][Reflection.Assembly]::Load($interopBytes)
 }
 <# Full C# source of the embedded helper, included for inspection:
@@ -177,7 +177,7 @@ $script:cleanupSucceeded = $false
      <Grid Margin="0,0,0,18"><StackPanel><TextBlock Text="A little less clutter." FontSize="29" FontWeight="SemiBold"/><TextBlock Text="Choose your apps. Make room for a fresh start." Foreground="{StaticResource Muted}" Margin="0,7,0,0" FontSize="13"/></StackPanel><Border HorizontalAlignment="Right" VerticalAlignment="Top" Background="#172B33" CornerRadius="12" Padding="12,6" Margin="0,7,0,0"><StackPanel Orientation="Horizontal"><Ellipse Width="6" Height="6" Fill="#6FE2C9" Margin="0,0,7,0"/><TextBlock x:Name="ModeLabel" Text="MEMORY SESSION" Foreground="#8CE6D6" FontSize="9" FontWeight="SemiBold"/></StackPanel></Border></Grid>
      <Border CornerRadius="18" Padding="25,20" Margin="0,0,0,24" ClipToBounds="True">
       <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#203B5C" Offset="0"/><GradientStop Color="#172B42" Offset=".6"/><GradientStop Color="#173E46" Offset="1"/></LinearGradientBrush></Border.Background>
-      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="155"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock Text="A CLEANER SPACE" Foreground="#82EBDD" FontSize="10" FontWeight="Bold"/><TextBlock Text="Out with the apps. On with your day." FontSize="20" FontWeight="SemiBold" Margin="0,9,0,8"/><TextBlock Text="Uninstall selected apps and clear their known local data,&#x0a;with a final review before anything is removed." Foreground="#AEC2D9" FontSize="12" LineHeight="19"/></StackPanel>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="155"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock Text="A CLEANER SPACE" Foreground="#82EBDD" FontSize="10" FontWeight="Bold"/><TextBlock Text="Everything, in one flow." FontSize="20" FontWeight="SemiBold" Margin="0,9,0,8"/><TextBlock Text="All 3 apps + Downloads contents + Pictures images.&#x0a;Scan and review everything before confirming." Foreground="#AEC2D9" FontSize="12" LineHeight="19"/><Button x:Name="AllCleanupButton" AutomationProperties.Name="Clean everything" HorizontalAlignment="Left" Background="#78E8D4" BorderBrush="#78E8D4" Foreground="#102C34" Padding="18,10" Margin="0,12,0,0"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE945;" FontFamily="Segoe MDL2 Assets" Margin="0,3,10,0"/><TextBlock Text="&#x0E25;&#x0E49;&#x0E32;&#x0E07;&#x0E17;&#x0E31;&#x0E49;&#x0E07;&#x0E2B;&#x0E21;&#x0E14;" FontSize="15" FontWeight="Bold"/><TextBlock Text="&#x2192;" Margin="18,0,0,0" FontSize="17"/></StackPanel></Button></StackPanel>
        <Grid Grid.Column="1" Width="125" Height="122" VerticalAlignment="Center"><Ellipse Width="112" Height="112" Stroke="#365F73" StrokeThickness="1"/><Ellipse Width="86" Height="86" Stroke="#497D8B" StrokeThickness="1"/><Border Width="60" Height="60" CornerRadius="20" Background="#72E5D1" RenderTransformOrigin=".5,.5"><Border.RenderTransform><RotateTransform Angle="-10"/></Border.RenderTransform><TextBlock Text="&#xE777;" FontFamily="Segoe MDL2 Assets" Foreground="#143B48" FontSize="29" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><Canvas x:Name="Orbit" Width="112" Height="112" RenderTransformOrigin=".5,.5"><Canvas.RenderTransform><RotateTransform/></Canvas.RenderTransform><Ellipse Width="9" Height="9" Fill="#79E8D6" Canvas.Left="51" Canvas.Top="-4"/><Ellipse Width="5" Height="5" Fill="#8BAAFF" Canvas.Left="10" Canvas.Top="91"/></Canvas></Grid>
       </Grid>
      </Border>
@@ -215,11 +215,13 @@ $script:cleanupSucceeded = $false
   </Grid>
   <Border Grid.Row="2" Background="#0D1425" BorderBrush="#202D43" BorderThickness="0,1,0,0"><Grid Margin="20,0"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="140"/></Grid.ColumnDefinitions><Ellipse x:Name="StatusDot" Fill="#74DEC8" Width="6" Height="6" Margin="0,0,8,0"/><TextBlock x:Name="LatestEvent" Grid.Column="1" Text="Ready" Foreground="#8598B3" FontSize="10" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/><ProgressBar x:Name="BusyProgress" Grid.Column="2" Height="3" IsIndeterminate="True" Foreground="#76E8D5" Background="#213248" Visibility="Collapsed"/></Grid></Border>
   <Grid KeyboardNavigation.TabNavigation="Cycle" x:Name="DialogOverlay" Grid.RowSpan="3" Background="#C5080D18" Visibility="Collapsed">
-   <Border x:Name="DialogCard" Width="580" MaxHeight="680" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#162237" BorderBrush="#405574" BorderThickness="1" CornerRadius="20" Padding="30"><Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><TextBlock x:Name="DialogEyebrow" Text="ONE LAST CHECK" Foreground="#7DE9D7" FontSize="10" FontWeight="Bold"/><TextBlock x:Name="DialogTitle" Grid.Row="1" Text="Review your cleanup" FontSize="25" FontWeight="SemiBold" Margin="0,12,0,15"/><ScrollViewer Grid.Row="2" MaxHeight="390" VerticalScrollBarVisibility="Auto"><TextBlock x:Name="DialogBody" Foreground="#B4C3D9" FontSize="13" LineHeight="22"/></ScrollViewer><StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0"><Button x:Name="DialogCancel" Content="Cancel" MinWidth="100" Margin="0,0,10,0"/><Button x:Name="DialogConfirm" Content="Confirm cleanup" Background="#78E8D4" BorderBrush="#78E8D4" Foreground="#102C34" FontWeight="SemiBold" MinWidth="140"/></StackPanel></Grid></Border>
+   <Border x:Name="DialogCard" Width="580" MaxHeight="680" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#162237" BorderBrush="#405574" BorderThickness="1" CornerRadius="20" Padding="30"><Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><TextBlock x:Name="DialogEyebrow" Text="ONE LAST CHECK" Foreground="#7DE9D7" FontSize="10" FontWeight="Bold"/><TextBlock x:Name="DialogTitle" Grid.Row="1" Text="Review your cleanup" FontSize="25" FontWeight="SemiBold" Margin="0,12,0,15"/><StackPanel Grid.Row="2"><ScrollViewer x:Name="DialogBodyScroll" MaxHeight="390" VerticalScrollBarVisibility="Auto"><TextBlock x:Name="DialogBody" Foreground="#B4C3D9" FontSize="13" LineHeight="22"/></ScrollViewer><Border x:Name="DialogReviewPanel" Visibility="Collapsed" Background="#0E192A" BorderBrush="#344A62" BorderThickness="1" CornerRadius="10" Padding="10" Margin="0,12,0,0"><StackPanel><TextBlock Text="PERMANENT DELETE / NO RECYCLE BIN / REVIEW ALL TARGETS" FontSize="10" Foreground="#F2B3BA" Margin="0,0,0,8"/><ListBox x:Name="DialogReviewItems" Height="155" Background="Transparent" BorderThickness="0" Foreground="#B4C3D9" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling"><ListBox.ItemContainerStyle><Style TargetType="ListBoxItem"><Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Padding" Value="4,6"/></Style></ListBox.ItemContainerStyle><ListBox.ItemTemplate><DataTemplate><StackPanel><TextBlock Text="{Binding Scope}" Foreground="#79E8D6" FontSize="10"/><TextBlock Text="{Binding Path}" ToolTip="{Binding Path}" Foreground="#D6E0EE" FontSize="11" TextWrapping="Wrap" Margin="0,3,0,0"/><TextBlock Text="{Binding Action}" Foreground="#A9B9CF" FontSize="10" TextWrapping="Wrap" Margin="0,2,0,0"/></StackPanel></DataTemplate></ListBox.ItemTemplate></ListBox></StackPanel></Border></StackPanel><StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0"><Button x:Name="DialogCancel" Content="Cancel" MinWidth="100" Margin="0,0,10,0"/><Button x:Name="DialogConfirm" Content="Confirm cleanup" Background="#78E8D4" BorderBrush="#78E8D4" Foreground="#102C34" FontWeight="SemiBold" MinWidth="140"/></StackPanel></Grid></Border>
   </Grid>
  </Grid>
  </Border>
 </Window>
+
+
 
 
 
@@ -398,7 +400,7 @@ if ($Preview) {
 }
 $script:cards = @($ChromeCard, $LineCard, $TelegramCard)
 $script:appStatuses = @($ChromeStatus, $LineStatus, $TelegramStatus)
-$script:workControls = @($ChromeCard,$LineCard,$TelegramCard,$QuickButton,$UninstallButton,$ScanButton,$DeleteButton,$SelectAllButton,$ResultsList,$DownloadsScanButton,$PicturesScanButton,$FolderDeleteButton)
+$script:workControls = @($ChromeCard,$LineCard,$TelegramCard,$QuickButton,$AllCleanupButton,$UninstallButton,$ScanButton,$DeleteButton,$SelectAllButton,$ResultsList,$DownloadsScanButton,$PicturesScanButton,$FolderDeleteButton)
 
 function Get-SelectedApps {
     for ($i=0; $i -lt $script:cards.Count; $i++) {
@@ -457,12 +459,17 @@ function Set-Page([string]$Name) {
 }
 function Hide-Review {
     $DialogOverlay.Visibility='Collapsed'
+    $script:allReviewPlan=$null
+    $DialogReviewPanel.Visibility='Collapsed'; $DialogReviewItems.ItemsSource=$null
+    $DialogCard.Width=580; $DialogBodyScroll.MaxHeight=390
     $Workspace.IsEnabled=$true
     $script:dialogAction=$null
     if ($null -ne $script:previousFocus) { [void]$script:previousFocus.Focus() }
 }
 function Show-Review([string]$Title, [string]$Body, [string]$Confirm, [scriptblock]$Action) {
     if ($script:busy) { return }
+    $DialogReviewPanel.Visibility='Collapsed'; $DialogReviewItems.ItemsSource=$null
+    $DialogCard.Width=580; $DialogBodyScroll.MaxHeight=390
     $script:previousFocus=[Windows.Input.Keyboard]::FocusedElement
     $DialogTitle.Text=$Title; $DialogBody.Text=$Body; $DialogConfirm.Content=$Confirm
     $DialogConfirm.IsEnabled=$true
@@ -620,9 +627,10 @@ $DeleteButton.Add_Click({
 $DialogCancel.Add_Click({ Hide-Review })
 $DialogConfirm.Add_Click({
     $action=$script:dialogAction
+    $approvedAllPlan=$script:allReviewPlan
     Hide-Review
     $script:cleanupSucceeded=$false
-    if ($null -ne $action) { & $action }
+    if ($null -ne $action) { & $action $approvedAllPlan }
 })
 $window.Add_PreviewKeyDown({
     if ($_.Key -eq [Windows.Input.Key]::Escape -and $DialogOverlay.Visibility -eq 'Visible') { Hide-Review; $_.Handled=$true }
@@ -632,7 +640,7 @@ foreach ($card in $script:cards) { $card.Add_Checked({ Update-Selection }); $car
 $CleanNav.Add_Click({ Set-Page 'Clean' }); $BackButton.Add_Click({ Set-Page 'Clean' })
 $ActivityNav.Add_Click({ Set-Page 'Activity' })
 $HelpButton.Add_Click({
-    Show-Review 'A clean start, directly from PowerShell.' "MEMORY SESSION`r`nNo package installation or app log file is needed. Closing this window ends the UI session. Windows and uninstallers can still record their normal activity.`r`n`r`nQUICK CLEAN`r`nSelect apps, review the confirmation, then close + uninstall + clean known locations in one flow.`r`n`r`nSTEP BY STEP`r`n1. Save your work, close the apps and uninstall.`r`n2. Scan known leftover locations.`r`n3. Check specific locations, then confirm deletion.`r`n`r`nOnly standard desktop installations are detected. Store, portable or custom installations may need Windows Settings.`r`n`r`nClean apps does not target Downloads, Pictures or Documents. Folder cleanup is a separate scan-and-confirm action for Downloads contents or Pictures image files. Folder deletion is permanent and may sync to cloud storage. This is not secure disk erasure.`r`n`r`nA restart request, failed uninstall or remaining installer registration stops automatic cleanup." 'Got it' $null
+    Show-Review 'A clean start, directly from PowerShell.' "MEMORY SESSION`r`nNo package installation or app log file is needed. Closing this window ends the UI session. Windows and uninstallers can still record their normal activity.`r`n`r`nQUICK CLEAN`r`nSelect apps, review the confirmation, then close + uninstall + clean known locations in one flow.`r`n`r`nSTEP BY STEP`r`n1. Save your work, close the apps and uninstall.`r`n2. Scan known leftover locations.`r`n3. Check specific locations, then confirm deletion.`r`n`r`nOnly standard desktop installations are detected. Store, portable or custom installations may need Windows Settings.`r`n`r`nQuick clean handles selected apps only. The combined Clean everything button always reviews all three apps, Downloads contents and Pictures image files together, including existing app leftovers. Cancel keeps everything. Individual folder actions remain available. Folder deletion is permanent and may sync to cloud storage. This is not secure disk erasure.`r`n`r`nA restart request, failed uninstall or remaining installer registration stops automatic cleanup." 'Got it' $null
 })
 $TitleBar.Add_MouseLeftButtonDown({
     if ($_.ClickCount -eq 2) { $window.WindowState=$(if ($window.WindowState -eq 'Maximized') {'Normal'} else {'Maximized'}) }
@@ -842,10 +850,127 @@ $PicturesScanButton.Add_Click({ Invoke-FolderScan 'Pictures' })
 $FolderDeleteButton.Add_Click({ Show-FolderDeleteReview })
 $FoldersNav.Add_Click({ Set-Page 'Folders' })
 
+# One review covers every supported app plus both user folders. Scanning never deletes.
+$script:allReviewPlan=$null
+$script:lastAllOutcome=$null
+
+function Get-AllInstallSignature($Entries) {
+    return (@($Entries | Sort-Object Name,Command,QuietCommand | Select-Object Name,Command,QuietCommand,Machine) | ConvertTo-Json -Depth 4 -Compress)
+}
+function New-AllCleanupPlan {
+    $appPlans=New-Object 'System.Collections.Generic.List[object]'
+    $review=New-Object 'System.Collections.Generic.List[object]'
+    foreach ($app in $script:apps) {
+        $installs=@(Get-Installs $app)
+        $targets=@(foreach ($kind in @('Paths','Keys')) {
+            foreach ($path in ($app[$kind] | Select-Object -Unique)) {
+                if ($script:isPreview -or $installs.Count -gt 0 -or (Test-Path -LiteralPath $path)) {
+                    [pscustomobject]@{Kind=$kind;Path=$path}
+                }
+            }
+        })
+        $appPlans.Add([pscustomobject]@{App=$app;Installs=$installs;Signature=(Get-AllInstallSignature $installs);Targets=$targets})
+        $action=$(if ($installs.Count) {'Close + uninstall + clean known locations'} elseif ($targets.Count) {'Close + delete reviewed leftover locations'} else {'No supported installation or leftovers; skip'})
+        $review.Add([pscustomobject]@{Scope=$app.Name;Path=$app.Name;Action=$action})
+        foreach ($target in $targets) { $review.Add([pscustomobject]@{Scope=$app.Name;Path=$target.Path;Action='Permanently delete known location and its contents'}) }
+        Invoke-UiPump
+    }
+    $folderPlans=@(foreach ($kind in @('Downloads','Pictures')) {
+        Write-Log ('All cleanup: scanning '+$kind)
+        if ($script:isPreview) { New-PreviewFolderPlan $kind } else { New-FolderCleanupPlan $kind }
+    })
+    # Known folders can overlap after redirection; delete each reviewed file once.
+    $seen=New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+    foreach ($plan in $folderPlans) {
+        $unique=New-Object 'System.Collections.Generic.List[object]'
+        $total=0L
+        foreach ($file in $plan.Files) {
+            if ($seen.Add($file.Path)) { $unique.Add($file); $total+=$file.Length }
+        }
+        $plan.Files=$unique.ToArray(); $plan.TotalBytes=$total
+        foreach ($entry in @($plan.Files)+@($plan.Directories)+@($plan.Skipped)) {
+            $review.Add([pscustomobject]@{Scope=$plan.Kind;Path=$entry.Path;Action=$entry.Action})
+        }
+    }
+    return [pscustomobject]@{Apps=$appPlans.ToArray();Folders=$folderPlans;Review=$review.ToArray();Preview=$script:isPreview;Used=$false}
+}
+function Invoke-AllAppCleanup($Entry) {
+    $app=$Entry.App
+    $current=@(Get-Installs $app)
+    if ((Get-AllInstallSignature $current) -cne $Entry.Signature) { throw 'Installation changed after review. Scan again.' }
+    if ($Entry.Installs.Count) { Invoke-FastCleanup $app; return }
+    Stop-AppProcesses $app
+    if (@(Get-Installs $app).Count) { throw 'App became installed after review. Leftover deletion stopped.' }
+    foreach ($target in $Entry.Targets) {
+        Assert-Stopped $app
+        Remove-AppLeftover $app $target.Kind $target.Path
+    }
+}
+function Invoke-AllCleanupPlan($Plan) {
+    if ($script:busy) { return }
+    if ($null -eq $Plan -or $Plan.Used -or $Plan.Preview -ne $script:isPreview) { throw 'This review is no longer valid. Scan again.' }
+    $Plan.Used=$true
+    $script:lastAllOutcome=$null
+    Invoke-Work {
+        Clear-Results
+        $script:folderPlan=$null; $FolderItems.ItemsSource=$null
+        $FolderSummary.Text='Combined cleanup in progress.'
+        $done=0; $skipped=0; $failedApps=0; $files=0; $folders=0; $failedFiles=0; $excluded=0
+        $stage=0
+        foreach ($entry in $Plan.Apps) {
+            $stage++
+            $ReadyTitle.Text="[$stage/5] " + $entry.App.Name
+            Write-Log ('All cleanup: '+$entry.App.Name); Invoke-UiPump
+            if (-not $entry.Installs.Count -and -not $entry.Targets.Count) { $skipped++; continue }
+            try { Invoke-AllAppCleanup $entry; $done++ }
+            catch { $failedApps++; Write-Log ('KEPT app data: '+$entry.App.Name+' - '+$_.Exception.Message) }
+        }
+        foreach ($folderPlan in $Plan.Folders) {
+            $stage++
+            $ReadyTitle.Text="[$stage/5] " + $folderPlan.Kind
+            Write-Log ('All cleanup: '+$folderPlan.Kind); Invoke-UiPump
+            $excluded+=$folderPlan.Skipped.Count
+            if (-not ($folderPlan.Files.Count+$folderPlan.Directories.Count)) { continue }
+            try {
+                $result=Invoke-FolderCleanupPlan $folderPlan
+                $files+=$result.Deleted; $folders+=$result.Folders; $failedFiles+=$result.Failed
+            } catch { $failedFiles++; Write-Log ('Folder cleanup stopped: '+$folderPlan.Kind+' - '+$_.Exception.Message) }
+        }
+        $script:lastAllOutcome=[pscustomobject]@{Apps=$done;SkippedApps=$skipped;FailedApps=$failedApps;Files=$files;Folders=$folders;FailedFiles=$failedFiles;SkippedFiles=$excluded;Preview=$script:isPreview}
+        $script:cleanupSucceeded=($failedApps+$failedFiles+$excluded+$skipped -eq 0 -and $done+$files+$folders -gt 0)
+    }
+    if ($null -ne $script:lastAllOutcome) {
+        $outcome=$script:lastAllOutcome
+        $ReadyTitle.Text=$(if ($outcome.Preview) {'Preview complete. Nothing was deleted.'} elseif ($outcome.FailedApps+$outcome.FailedFiles) {'Combined cleanup finished with issues.'} else {'Combined cleanup complete.'})
+        $ReadyDetail.Text=('{0} apps / {1} files / {2} folders / {3} skipped / {4} failed. See Activity log.' -f $outcome.Apps,$outcome.Files,$outcome.Folders,($outcome.SkippedApps+$outcome.SkippedFiles),($outcome.FailedApps+$outcome.FailedFiles))
+        $FolderSummary.Text=$ReadyTitle.Text; $FolderDetail.Text=$ReadyDetail.Text
+        Write-Log $ReadyTitle.Text; Write-Log $ReadyDetail.Text
+    }
+}
+function Show-AllCleanupReview {
+    if ($script:busy) { return }
+    $script:allReviewPlan=$null
+    Invoke-Work {
+        $ReadyTitle.Text='Scanning all cleanup targets...'
+        $script:allReviewPlan=New-AllCleanupPlan
+        $ReadyTitle.Text='All targets scanned. Review before deleting.'
+    }
+    $plan=$script:allReviewPlan
+    if ($null -eq $plan) { return }
+    $folderSummary=(@($plan.Folders | ForEach-Object { '{0}: {1} files / {2} folders / {3} skipped / {4}{5}{6}' -f $_.Kind,$_.Files.Count,$_.Directories.Count,$_.Skipped.Count,(Format-FileSize $_.TotalBytes),[Environment]::NewLine,$_.Root }) -join "`r`n`r`n")
+    $body="ALL THREE APPS: Google Chrome, LINE, Telegram Desktop.`r`nClose apps, run their uninstallers, and delete known local profiles, saved sign-ins, bookmarks and chats. Existing leftover locations are included even when no installer is found. Unsaved work may be lost.`r`n`r`n$folderSummary`r`n`r`nDownloads: reviewed contents. Pictures: image files only. PERMANENT DELETE. No Recycle Bin. Synced deletions may propagate to cloud storage. New or changed folder files are kept. Review the full target list below; skipped items stay."
+    Show-Review 'Clean everything in one flow?' $body 'Confirm all cleanup' { param($ApprovedPlan) Invoke-AllCleanupPlan $ApprovedPlan }
+    $DialogCard.Width=700; $DialogBodyScroll.MaxHeight=210
+    $DialogReviewItems.ItemsSource=$plan.Review
+    $DialogReviewPanel.Visibility='Visible'
+}
+$AllCleanupButton.Add_Click({ Show-AllCleanupReview })
+
 $LogPathLabel.Text='MEMORY SESSION / Activity is shown here only; no application log file is written.'
 Write-Log $(if ($Preview) {'Preview ready. All cleanup actions are simulated.'} else {'Memory session ready. Select apps and review before confirming cleanup.'})
 Update-Selection
 if (-not $NoShow) { [void]$window.ShowDialog() }
+
 
 
 
