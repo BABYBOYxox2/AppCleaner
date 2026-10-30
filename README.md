@@ -16,6 +16,8 @@ irm https://raw.githubusercontent.com/BABYBOYxox2/AppCleaner/main/run.ps1 | iex
 
 งานจะทำต่อทีละส่วนและสรุปรายการที่สำเร็จ ข้าม หรือผิดพลาดไว้ใน Activity log หากถอนแอปหนึ่งไม่สำเร็จ จะเก็บข้อมูลของแอปนั้นไว้และทำงานส่วนอื่นต่อ ปุ่ม Quick clean และปุ่มแยกยังใช้ทำเฉพาะงานได้ตามเดิม
 
+แก้กรณี Discord ขึ้น `Cannot verify process location`: โปรแกรมจะอ่านตำแหน่งผ่าน Windows API เมื่อวิธีปกติอ่านไม่ได้ ปิดเฉพาะโปรเซสที่ตรวจตำแหน่งได้ แล้วรอให้โปรเซสลูกปิดตามก่อนถอนและล้างข้อมูล หากยังถูกปฏิเสธสิทธิ์ จะหยุดและแสดง PID พร้อมสาเหตุใน Activity log ให้ปิด Discord จากถาดระบบแล้วลองใหม่ หรือเปิด Windows PowerShell แบบ Run as administrator หากยังขึ้น Access is denied
+
 หากใช้ PowerShell 7 ให้เปิด Windows PowerShell ก่อนด้วย `powershell.exe -NoProfile -STA` แล้วจึงวางคำสั่งข้างต้น
 
 ## การทำงาน
