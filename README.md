@@ -18,6 +18,8 @@ irm https://raw.githubusercontent.com/BABYBOYxox2/AppCleaner/main/run.ps1 | iex
 
 เมื่อ **ล้างทั้งหมดเสร็จ** หน้าต่าง AppCleaner จะปิดเอง หากมีข้อผิดพลาดหรือไฟล์ที่ข้าม จะเปิดค้างไว้ให้ตรวจ Activity log แอปที่ไม่มีอยู่แล้วและโฟลเดอร์ว่างไม่ขัดขวางการปิดอัตโนมัติ โหมด Preview และปุ่มทำงานแยกยังคงเปิดหน้าต่างไว้ การปิดนี้ไม่ปิดหน้าต่าง PowerShell ที่ใช้เปิดโปรแกรม
 
+แก้กรณี Chrome ขึ้น `Cannot delete a subkey tree because the subkey does not exist`: ลบคีย์ Registry ที่อยู่ในรายการอนุญาตผ่าน [Registry API](https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.registrykey.deletesubkeytree?view=netframework-4.8.1) โดยถือว่าคีย์ที่ไม่มีอยู่แล้วเสร็จเรียบร้อย และตรวจว่าคีย์หายไปจริงหลังลบ หากสิทธิ์ไม่พอหรือยังมีคีย์เหลือ จะยังรายงานข้อผิดพลาดพร้อมตำแหน่งคีย์
+
 แก้กรณี Discord ขึ้น `Cannot verify process location`: โปรแกรมจะอ่านตำแหน่งผ่าน Windows API เมื่อวิธีปกติอ่านไม่ได้ ปิดเฉพาะโปรเซสที่ตรวจตำแหน่งได้ แล้วรอให้โปรเซสลูกปิดตามก่อนถอนและล้างข้อมูล หากยังถูกปฏิเสธสิทธิ์ จะหยุดและแสดง PID พร้อมสาเหตุใน Activity log ให้ปิด Discord จากถาดระบบแล้วลองใหม่ หรือเปิด Windows PowerShell แบบ Run as administrator หากยังขึ้น Access is denied
 
 หากใช้ PowerShell 7 ให้เปิด Windows PowerShell ก่อนด้วย `powershell.exe -NoProfile -STA` แล้วจึงวางคำสั่งข้างต้น
