@@ -1,4 +1,4 @@
-﻿# AppCleaner Memory edition. Copy the full paste-ready text into Windows PowerShell 5.1.
+# AppCleaner Memory edition. Copy the full paste-ready text into Windows PowerShell 5.1.
 # Opening the UI does not install/extract a package or write an application log.
 # Destructive operations still require explicit confirmation in the UI.
 # Windows, PowerShell, .NET and official uninstallers may keep normal system records.
